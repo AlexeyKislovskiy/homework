@@ -2,7 +2,7 @@ public class Calculator {
 
     public static void calculate(int val1, String operator, int val2) {
         int result = 0;
-        if (operator.equals("/") && val2 == 0) System.out.println("Сan't divide by 0");
+        if (operator.equals("/") && val2 == 0) System.out.print("Сan't divide by 0");
         else {
             switch (operator) {
                 case "+" -> result = val1 + val2;
