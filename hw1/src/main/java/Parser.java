@@ -1,6 +1,4 @@
-package main;
-
-import main.Calculator;
+package main.java;
 
 public class Parser {
     public static void parse(String[] args) {

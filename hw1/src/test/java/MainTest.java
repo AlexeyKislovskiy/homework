@@ -1,14 +1,12 @@
-package tests;
+package test.java;
 
-import main.Main;
+import main.java.Main;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import static org.junit.Assert.*;
 
 public class MainTest {
     private ByteArrayOutputStream os = new ByteArrayOutputStream();

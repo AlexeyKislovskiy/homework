@@ -1,6 +1,6 @@
-package tests;
+package test.java;
 
-import main.Parser;
+import main.java.Parser;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
