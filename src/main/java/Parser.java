@@ -1,5 +1,3 @@
-package main.java;
-
 public class Parser {
     public static void parse(String[] args) {
         if (args.length != 3) {

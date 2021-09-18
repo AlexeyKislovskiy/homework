@@ -1,6 +1,4 @@
-package test.java;
 
-import main.java.Parser;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

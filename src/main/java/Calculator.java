@@ -1,5 +1,3 @@
-package main.java;
-
 public class Calculator {
 
     public static void calculate(int val1, String operator, int val2) {
