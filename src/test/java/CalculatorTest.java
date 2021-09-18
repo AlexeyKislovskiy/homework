@@ -27,6 +27,12 @@ public class CalculatorTest {
     }
 
     @Test
+    public void zeroDivisionTest(){
+        Calculator.calculate(8, "/", 0);
+        Assert.assertEquals("Сan't divide by 0", os.toString());
+    }
+
+    @Test
     public void additionTest() {
         Calculator.calculate(5, "+", 7);
         Assert.assertEquals("Result is: 12", os.toString());

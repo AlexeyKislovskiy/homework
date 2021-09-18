@@ -25,8 +25,18 @@ public class ParserTest {
     }
 
     @Test
-    public void incorrectTypeOfArgumentsTest() {
+    public void incorrectTypeOfArgumentsTest1() {
         String[] args = {"1", "+", "k"};
+        try {
+            Parser.parse(args);
+        } catch (IllegalArgumentException e) {
+            Assert.assertEquals(e.getMessage(), "First or third argument is not a number");
+        }
+    }
+
+    @Test
+    public void incorrectTypeOfArgumentsTest2() {
+        String[] args = {"k", "+", "1"};
         try {
             Parser.parse(args);
         } catch (IllegalArgumentException e) {
