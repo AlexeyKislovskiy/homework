@@ -1,64 +1,62 @@
+import org.junit.Assert
+import org.junit.Before
+import org.junit.Test
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
-public class ParserTest {
-    private final ByteArrayOutputStream os = new ByteArrayOutputStream();
-    private final Parser parser = new Parser();
+class ParserTest {
+    private val os = ByteArrayOutputStream()
+    private val parser = Parser()
 
     @Before
-    public void setUpStreams() {
-        System.setOut(new PrintStream(os));
+    fun setUpStreams() {
+        System.setOut(PrintStream(os))
     }
 
     @Test
-    public void incorrectNumberOfArgumentsTest() {
-        String[] args = {"1", "+", "2", "3"};
+    fun incorrectNumberOfArgumentsTest() {
+        val args = arrayOf("1", "+", "2", "3")
         try {
-            parser.parse(args);
-        } catch (IllegalArgumentException e) {
-            Assert.assertEquals(e.getMessage(), "Invalid number of arguments");
+            parser.parse(args)
+        } catch (e: IllegalArgumentException) {
+            Assert.assertEquals(e.message, "Invalid number of arguments")
         }
     }
 
     @Test
-    public void incorrectTypeOfArgumentsTest1() {
-        String[] args = {"1", "+", "k"};
+    fun incorrectTypeOfArgumentsTest1() {
+        val args = arrayOf("1", "+", "k")
         try {
-            parser.parse(args);
-        } catch (IllegalArgumentException e) {
-            Assert.assertEquals(e.getMessage(), "First or third argument is not a number");
+            parser.parse(args)
+        } catch (e: IllegalArgumentException) {
+            Assert.assertEquals(e.message, "First or third argument is not a number")
         }
     }
 
     @Test
-    public void incorrectTypeOfArgumentsTest2() {
-        String[] args = {"k", "+", "1"};
+    fun incorrectTypeOfArgumentsTest2() {
+        val args = arrayOf("k", "+", "1")
         try {
-            parser.parse(args);
-        } catch (IllegalArgumentException e) {
-            Assert.assertEquals(e.getMessage(), "First or third argument is not a number");
+            parser.parse(args)
+        } catch (e: IllegalArgumentException) {
+            Assert.assertEquals(e.message, "First or third argument is not a number")
         }
     }
 
     @Test
-    public void incorrectOperatorTest() {
-        String[] args = {"1", "**", "2"};
+    fun incorrectOperatorTest() {
+        val args = arrayOf("1", "**", "2")
         try {
-            parser.parse(args);
-        } catch (IllegalArgumentException e) {
-            Assert.assertEquals(e.getMessage(), "Operator is not supported");
+            parser.parse(args)
+        } catch (e: IllegalArgumentException) {
+            Assert.assertEquals(e.message, "Operator is not supported")
         }
     }
 
     @Test
-    public void correctArgumentsTest() {
-        String[] args = {"1", "+", "2"};
-        parser.parse(args);
-        Assert.assertEquals("", os.toString());
+    fun correctArgumentsTest() {
+        val args = arrayOf("1", "+", "2")
+        parser.parse(args)
+        Assert.assertEquals("", os.toString())
     }
 }
