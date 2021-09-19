@@ -7,7 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 public class MainTest {
-    private ByteArrayOutputStream os = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream os = new ByteArrayOutputStream();
 
     @Before
     public void setUpStreams() {
@@ -16,7 +16,7 @@ public class MainTest {
 
     @Test
     public void mainTest() {
-        Main.main(new String[]{"5", "-", "2"});
+        new Main().main(new String[]{"5", "-", "2"});
         Assert.assertEquals("Result is: 3", os.toString());
     }
 }

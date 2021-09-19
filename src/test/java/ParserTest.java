@@ -7,7 +7,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 public class ParserTest {
-    private ByteArrayOutputStream os = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream os = new ByteArrayOutputStream();
+    private final Parser parser = new Parser();
 
     @Before
     public void setUpStreams() {
@@ -18,7 +19,7 @@ public class ParserTest {
     public void incorrectNumberOfArgumentsTest() {
         String[] args = {"1", "+", "2", "3"};
         try {
-            Parser.parse(args);
+            parser.parse(args);
         } catch (IllegalArgumentException e) {
             Assert.assertEquals(e.getMessage(), "Invalid number of arguments");
         }
@@ -28,7 +29,7 @@ public class ParserTest {
     public void incorrectTypeOfArgumentsTest1() {
         String[] args = {"1", "+", "k"};
         try {
-            Parser.parse(args);
+            parser.parse(args);
         } catch (IllegalArgumentException e) {
             Assert.assertEquals(e.getMessage(), "First or third argument is not a number");
         }
@@ -38,7 +39,7 @@ public class ParserTest {
     public void incorrectTypeOfArgumentsTest2() {
         String[] args = {"k", "+", "1"};
         try {
-            Parser.parse(args);
+            parser.parse(args);
         } catch (IllegalArgumentException e) {
             Assert.assertEquals(e.getMessage(), "First or third argument is not a number");
         }
@@ -48,7 +49,7 @@ public class ParserTest {
     public void incorrectOperatorTest() {
         String[] args = {"1", "**", "2"};
         try {
-            Parser.parse(args);
+            parser.parse(args);
         } catch (IllegalArgumentException e) {
             Assert.assertEquals(e.getMessage(), "Operator is not supported");
         }
@@ -57,7 +58,7 @@ public class ParserTest {
     @Test
     public void correctArgumentsTest() {
         String[] args = {"1", "+", "2"};
-        Parser.parse(args);
+        parser.parse(args);
         Assert.assertEquals("", os.toString());
     }
 }

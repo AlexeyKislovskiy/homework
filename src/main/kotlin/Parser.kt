@@ -1,18 +1,18 @@
-public class Parser {
-    public static void parse(String[] args) {
-        if (args.length != 3) {
-            System.out.print("Invalid number of arguments");
-            throw new IllegalArgumentException("Invalid number of arguments");
+class Parser {
+    fun parse(args: Array<String>) {
+        if (args.size != 3) {
+            print("Invalid number of arguments")
+            throw IllegalArgumentException("Invalid number of arguments")
         }
-        String operator = args[1];
-        if (!Calculator.isInt(args[0]) || !Calculator.isInt(args[2])) {
-            System.out.print("First or third argument is not a number");
-            throw new IllegalArgumentException("First or third argument is not a number");
+        val operator = args[1]
+        val calculator = Calculator()
+        if (!calculator.isInt(args[0]) || !calculator.isInt(args[2])) {
+            print("First or third argument is not a number")
+            throw IllegalArgumentException("First or third argument is not a number")
         }
-
-        if (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") && !operator.equals("/")) {
-            System.out.print("Operator is not supported");
-            throw new IllegalArgumentException("Operator is not supported");
+        if (operator != "+" && operator != "-" && operator != "*" && operator != "/") {
+            print("Operator is not supported")
+            throw IllegalArgumentException("Operator is not supported")
         }
     }
 }
