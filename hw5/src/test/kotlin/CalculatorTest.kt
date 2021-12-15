@@ -53,10 +53,10 @@ class CalculatorTest {
     }
 
     @Test
-    fun floatSubtractTest() {
+    fun doubleSubtractTest() {
         runBlocking {
             val ans = returnAns(arrayOf("1.5", "-", "2"))
-            Assert.assertEquals(Either.Right(-0.5F), ans)
+            Assert.assertEquals(Either.Right(-0.5), ans)
         }
     }
 
@@ -80,7 +80,31 @@ class CalculatorTest {
     fun notIntDivideTest() {
         runBlocking {
             val ans = returnAns(arrayOf("5.0", "/", "2"))
-            Assert.assertEquals(Either.Right(2.5F), ans)
+            Assert.assertEquals(Either.Right(2.5), ans)
+        }
+    }
+
+    @Test
+    fun intCalculateTest() {
+        runBlocking {
+            val ans = calculate(Pair(3, 5), "+")
+            Assert.assertEquals(Either.Right(8), ans)
+        }
+    }
+
+    @Test
+    fun floatCalculateTest() {
+        runBlocking {
+            val ans = calculate(Pair(9.4f, 3.2f), "-")
+            Assert.assertEquals(Either.Right(6.2f), ans)
+        }
+    }
+
+    @Test
+    fun doubleCalculateTest() {
+        runBlocking {
+            val ans = calculate(Pair(1.34, 3.49), "*")
+            Assert.assertEquals(Either.Right(4.6766000000000005), ans)
         }
     }
 }
