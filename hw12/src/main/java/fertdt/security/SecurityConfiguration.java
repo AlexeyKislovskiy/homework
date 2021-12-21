@@ -27,8 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/user/*").hasRole("USER")
+                .antMatchers("/users").hasAnyRole("USER","ADMIN")
                 .antMatchers("/register", "/auth").permitAll();
 
         http.exceptionHandling().accessDeniedPage("/login");
